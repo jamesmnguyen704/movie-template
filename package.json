@@ -1,0 +1,21 @@
+{
+  "name": "fullstackprepcourse-unit11-finalproject",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.html",
+  "scripts": {
+    "test": "npx cypress run"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/savvy-coders/FS-Prep-Unit11-FinalProject.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/savvy-coders/FS-Prep-Unit11-FinalProject/issues"
+  },
+  "homepage": "https://github.com/savvy-coders/FS-Prep-Unit11-FinalProject#Unit11.md",
+  "devDependencies": {
+  }
+}

@@ -83,13 +83,14 @@ footer {
   gap: 16px;
   overflow-x: auto;
   padding: 12px 0;
-  background: #222;
+  background: #222; /* Dark background for contrast */
 }
 .trending-movie {
   flex: 0 0 auto;
   width: 120px;
   text-align: center;
   font-size: 0.95em;
+  color: #fff; /* had to add this line since the background color clash with the movie title */
 }
 .trending-movie img {
   width: 100px;
@@ -97,6 +98,31 @@ footer {
   border-radius: 8px;
 }
 
+/* upcoming movies section */
+.month-group {
+  margin-bottom: 2rem;
+}
+
+.month-movies {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  padding: 8px 0;
+}
+
+.upcoming-movie {
+  width: 120px;
+  text-align: center;
+  background: #222;
+  color: #fff;
+  border-radius: 8px;
+  padding: 8px;
+}
+.upcoming-movie img {
+  width: 100px;
+  height: auto;
+  border-radius: 8px;
+}
 
 
 

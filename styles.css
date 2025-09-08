@@ -1,27 +1,54 @@
+/* Reset and base styles */
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 body {
-    font-family: Arial, Helvetica, sans-serif;
-    background: #f8f9fa;
-    color: #222;
-    line-height: 1.6;
+  font-family: Arial, Helvetica, sans-serif;
+  background: #f8f9fa;
+  color: #222;
+  line-height: 1.6;
+  text-align: center;
 }
-header {
-    background: #222;
-    color: #fff;
-    padding: 1rem 0;
-    text-align: center;
 
+/* Typography */
+h1, h2 {
+  margin-bottom: 0.5em;
+  text-decoration: underline;
 }
+p, h1 {
+  font-family: Arial, Helvetica, sans-serif;
+}
+li {
+  font-size: 1.2rem;
+}
+ul {
+  list-style: none;
+}
+
+/* Header and Footer */
+header {
+  background: #222;
+  color: #fff;
+  padding: 1rem 0;
+  text-align: center;
+}
+footer {
+  background: #222;
+  color: #fff;
+  text-align: center;
+  padding: 1rem 0;
+  margin-top: 2rem;
+  font-weight: bold;
+}
+
+/* Navigation */
 nav ul {
-    list-style: none;
-    display: flex;
-    justify-content: center;
-    gap: 1rem;
-    margin-top: 1rem;
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 1rem;
 }
 nav a {
   color: #fff;
@@ -30,32 +57,32 @@ nav a {
   transition: color 0.2s;
   font-size: 2.0rem;
 }
-
 nav a:hover {
   color: #ffd700;
 }
+
+/* Movie Sections */
 #Movie ul {
-    list-style: none;
-    padding-left: 0;
+  padding-left: 0;
 }
 #Movie li {
-    margin-bottom: 1.5rem;
-    border-bottom: 1px solid #eee;
-    padding-bottom: 1rem;
+  margin-bottom: 1.5rem;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 1rem;
 }
+
+/* Forms */
 form label {
   display: block;
   margin-top: 1rem;
   margin-bottom: 0.5rem;
 }
-
 form input, form textarea {
   width: 100%;
   padding: 0.5rem;
   border: 1px solid #ccc;
   border-radius: 4px;
 }
-
 form button {
   margin-top: 1rem;
   padding: 0.7rem 2rem;
@@ -65,51 +92,44 @@ form button {
   border-radius: 4px;
   cursor: pointer;
 }
-
 form button:hover {
   background: #ffd700;
   color: #222;
 }
 
-footer {
-  background: #222;
-  color: #fff;
-  text-align: center;
-  padding: 1rem 0;
-  margin-top: 2rem;
+/* Images */
+img {
+  border-radius: 25px;
+  width: 100px;
+  height: auto;
 }
+
+/* Trending Movies */
 #trending-movies {
   display: flex;
   gap: 16px;
   overflow-x: auto;
   padding: 12px 0;
-  background: #222; /* Dark background for contrast */
+  background: #222;
 }
 .trending-movie {
   flex: 0 0 auto;
   width: 120px;
   text-align: center;
   font-size: 0.95em;
-  color: #fff; /* had to add this line since the background color clash with the movie title */
-}
-.trending-movie img {
-  width: 100px;
-  height: auto;
-  border-radius: 8px;
+  color: #fff;
 }
 
-/* upcoming movies section */
+/* Upcoming Movies */
 .month-group {
   margin-bottom: 2rem;
 }
-
 .month-movies {
   display: flex;
   flex-wrap: wrap;
   gap: 16px;
   padding: 8px 0;
 }
-
 .upcoming-movie {
   width: 120px;
   text-align: center;
@@ -118,31 +138,30 @@ footer {
   border-radius: 8px;
   padding: 8px;
 }
-.upcoming-movie img {
-  width: 100px;
-  height: auto;
-  border-radius: 8px;
+
+/* Table Styles */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: #fff;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-  
-    body { font-family: Arial, sans-serif; margin: 40px; background: #f8f9fa; }
-    h1, h2 { margin-bottom: 0.5em; }
-    .subtitle { color: #555; margin-bottom: 1em; }
-    table { width: 100%; border-collapse: collapse; background: #fff; }
-    th, td { padding: 8px 12px; border: 1px solid #ddd; text-align: left; }
-    th { background: #e9ecef; }
-    tr:nth-child(even) { background: #f2f2f2; }
-    .key { font-size: 0.95em; color: #888; margin-bottom: 1em; }
-  
+th, td {
+  padding: 8px 12px;
+  border: 1px solid #ddd;
+  text-align: left;
+}
+th {
+  background: #e9ecef;
+}
+tr:nth-child(even) {
+  background: #f2f2f2;
+}
+.subtitle {
+  color: #555;
+  margin-bottom: 1em;
+}
+.key {
+  font-size: 0.95em;
+  color: #888;
+  margin-bottom: 1em;
+}

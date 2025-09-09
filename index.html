@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>2025 Movies  | My Portfolio</title>
     <link rel="stylesheet" href="styles.css">
-    <script src="script.js" defer></script> <!-- Fix typo: 'scr' to 'src' -->
+    <script src="script.js" defer></script>
 </head>
 <body>
     <header>
@@ -16,44 +16,37 @@
                 <li><a href="movie.html">Movie</a></li>
                 <li><a href="upcomingreleasedate.html">Upcoming Release</a></li>
                 <li><a href="boxoffice.html">BoxOffice</a></li>
-                <li><a href="#Review">Review</a></li>
             </ul>
         </nav>
     </header>
 
     <main>
-    <button id="timeCheckBtn">Check Current Time</button>
-    <div id="time"></div>
-    <div id="about-me" class="content">
-        <h1>Who am I?</h1>
-        <img id="my-pic" src="images/yourpic.jpg" alt="Your Name">
-        <p>Short description about you</p>    
-    <div id="now-learning" class="content"></div>
-        <h1>I Am Currently Learning...</h1>
-        <ul><li>HTML</li><li>CSS</li><li>JavaScript</li><li>Web Development</li></ul>
-       <footer>
-        <p>James Nguyen 2025</p>
-        <a href="page2.html">My Vacation Spots</a>
-    
-    
+     <!-- <div id="trending-movies"></div> find out how to hide the scroll bar for this section -->
     <section id="home">
             <h2>Welcome to my Movie reviews for 2025 in the US</h2>
             <p>Here I will try to have reviews, box office results, news, and information</p>
         </section>
-             <h2> Trending Movies</h2>
-        
-        <div id="trending-movies"></div>
-        
-
         <section id="Movie">
             <h2>2025 Biggest Movies Domestically</h2>
-            <ul>
-                <li>
-                    <h3>Minecraft Movie</h3>
-                    <p>Release Date: January 2025</p>
-                    <p>Genre: Animation</p>
-                    <p>Box Office: $423,949,195</p>
-                </li><li>
+            <ul class="movie-list">
+  <li class="movie-item">
+    <div class="movie-info">
+      <h3>Minecraft Movie</h3>
+      <p>Release Date: January 2025</p>
+      <p>Genre: Animation</p>
+      <p class="box-office">$423,949,195</p>
+    </div>
+    <img src="images/minecraft.jpg" alt="Minecraft Movie Poster" class="movie-poster">
+  </li><li class="movie-item">
+    <div class="movie-info">
+      <h3>Lilo & Stitch</h3>
+      <p>Release Date: May 2025</p>
+      <p>Genre: Animation</p>
+      <p class="box-office">$423,464,749</p>
+    </div>
+    <img src="/images/lilostitch.jpeg" alt="Lilo & Stitch Movie Poster" class="movie-poster">
+  </li>
+  <!-- Repeat for each movie, updating info and image src --><li>
                     <h3>Lilo & Stitch</h3>
                     <p>Release Date: January 2025</p>
                     <p>Genre: Animation</p>
@@ -81,7 +74,7 @@
                 </li><li>
                     <h3>How To Train Your Dragon</h3>
                     <p>Release Date: June 2025</p>
-                    <p>Genre: Horror</p>
+                    <p>Genre: Animation</p>
                     <p>Box Office: $262,958,100</p>
                 </li><li>
                     <h3>Captain America: Brave New World</h3>
@@ -96,7 +89,7 @@
                 </li><li>
                     <h3>ThunderBolts</h3>
                     <p>Release Date: May 2025</p>
-                    <p>Genre: Horror</p>
+                    <p>Genre: Superhero</p>
                     <p>Box Office: 	$190,274,328</p>
                 </li>
                 <!-- Add more movies here -->
@@ -131,18 +124,6 @@
         <li>Jurassic World: Rebirth: $338,417,795</li>
         <li>Sinners: $278,578,513</li>
         <!-- Add more results -->
-    </ul>
-</section>
-
-<section id="Review">
-    <h2>Reviews</h2>
-    <ul>
-        <li>Minecraft Movie: Exciting and fun!</li>
-        <li>Lilo & Stitch: Exciting and fun!</li>
-        <li>Superman: Exciting and fun!</li>
-        <li>Jurassic World: Rebirth: Exciting and fun!</li>
-        <li>Sinners: Exciting and fun!</li>
-        <!-- Add more reviews -->
     </ul>
 </section>
         <section id="contact">

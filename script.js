@@ -1,40 +1,37 @@
-// Add your script below this line, but above the next comment!
 // TMDb API key for authentication
-const tmdbApiKey = '69971c171ca25d21134880bcfe861e67'; // key i received when I signed up for api on TMDB site
+const tmdbApiKey = '69971c171ca25d21134880bcfe861e67'; // Your TMDb API key
 
-// Function to fetch and display upcoming movies grouped by month
-function fetchUpcomingMovies() {
-  // Today's date for filtering movies released after this date
-  const today = '2025-09-05';
+function fetchUpcomingMovies() {  // Function to fetch and display upcoming movies
+  const today = '2025-09-05'; // Today's date for filtering upcoming releases
+  const urls = [  // Array of URLs for 5 pages of upcoming movies from TMDb
+    `https://api.themoviedb.org/3/discover/movie?api_key=${tmdbApiKey}&language=en-US&sort_by=popularity.desc&primary_release_date.gte=${today}&page=1`,
+    `https://api.themoviedb.org/3/discover/movie?api_key=${tmdbApiKey}&language=en-US&sort_by=popularity.desc&primary_release_date.gte=${today}&page=2`,
+    `https://api.themoviedb.org/3/discover/movie?api_key=${tmdbApiKey}&language=en-US&sort_by=popularity.desc&primary_release_date.gte=${today}&page=3`,
+    `https://api.themoviedb.org/3/discover/movie?api_key=${tmdbApiKey}&language=en-US&sort_by=popularity.desc&primary_release_date.gte=${today}&page=4`,
+    `https://api.themoviedb.org/3/discover/movie?api_key=${tmdbApiKey}&language=en-US&sort_by=popularity.desc&primary_release_date.gte=${today}&page=5`
+  ]; // see if i can just past page 5 as the argument
 
-  // TMDb Discover endpoint with filters for popularity and release date
-  const url = `https://api.themoviedb.org/3/discover/movie?api_key=${tmdbApiKey}&language=en-US&sort_by=popularity.desc&primary_release_date.gte=${today}`;
+  // const urls = [  // Array of URLs for 5 pages of upcoming movies from TMDb
+  //   `https://api.themoviedb.org/3/discover/movie?api_key=${tmdbApiKey}&language=en-US&sort_by=popularity.desc&primary_release_date.gte=${today}&page=5`
+  // ];
 
-  // Fetch data from TMDb API
-  fetch(url)
-    .then(response => response.json()) // Parse the response as JSON
-    .then(data => {
-      // Get the container div where movies will be displayed
-      const upcomingDiv = document.getElementById('upcoming-movies');
+
+  Promise.all(urls.map(url => fetch(url).then(res => res.json()))) // Fetch all 5 pages in parallel and process the results
+    .then(pages => {
+      const allMovies = pages.flatMap(page => page.results); // Combine results from all pages into one array
+      const upcomingDiv = document.getElementById('upcoming-movies'); // Get the container div for upcoming movies
       if (upcomingDiv) {
-        // Group movies by month and year
-        const moviesByMonth = {};
-        data.results.forEach(movie => {
+        const moviesByMonth = {}; // Group movies by month and year of release
+        allMovies.forEach(movie => {
           if (movie.release_date) {
-            // Extract year and month from release date
-            const [year, month] = movie.release_date.split('-');
-            // Get month name (e.g., January, February)
-            const monthName = new Date(movie.release_date).toLocaleString('default', { month: 'long' });
-            // Create a key like "September 2025"
-            const key = `${monthName} ${year}`;
-            // Initialize array for this month if not present
-            if (!moviesByMonth[key]) moviesByMonth[key] = [];
-            // Add movie to the corresponding month
-            moviesByMonth[key].push(movie);
+            const [year, month] = movie.release_date.split('-'); // Extract year and month
+            const monthName = new Date(movie.release_date).toLocaleString('default', { month: 'long' }); // Get month name
+            const key = `${monthName} ${year}`; // Create grouping key
+            if (!moviesByMonth[key]) moviesByMonth[key] = []; // Initialize array if needed
+            moviesByMonth[key].push(movie); // Add movie to group
           }
         });
-
-        // Render the grouped movies by month
+ // Render grouped movies into HTML
         upcomingDiv.innerHTML = Object.keys(moviesByMonth).length > 0
           ? Object.entries(moviesByMonth).map(([month, movies]) => `
               <div class="month-group">
@@ -51,17 +48,14 @@ function fetchUpcomingMovies() {
                 </div>
               </div>
             `).join('')
-          : '<div>No big upcoming movies found after September 5, 2025.</div>';
+          : '<div>No big upcoming movies found after September 5, 2025.</div>'; // Show message if no movies found
       }
     })
     .catch(error => console.error('TMDb API error:', error)); // Log any errors
 }
+fetchUpcomingMovies(); // Call the function to fetch and display upcoming movies when the page loads
 
-// Call the function to fetch and display upcoming movies when the page loads
-fetchUpcomingMovies();
-
-// Function to fetch and display trending movies for the week for index.html
-function fetchTrendingMovies() {
+function fetchTrendingMovies() {  // Function to fetch and display trending movies for the week for index.html
   // TMDb Trending endpoint for movies this week
   const url = `https://api.themoviedb.org/3/trending/movie/week?api_key=${tmdbApiKey}`;
 
@@ -88,27 +82,23 @@ function fetchTrendingMovies() {
 // Call the function to fetch and display trending movies when the page loads
 fetchTrendingMovies();
 
+// Function to set up the time check button
 function getBtnAndShow() {
   function displayDateAndTime() {
-    document.getElementById('time').innerHTML = Date();
+    document.getElementById('time').innerHTML = Date(); // Show current date/time
   }
-  document.getElementById('timeCheckBtn').addEventListener('click', displayDateAndTime);
+  document.getElementById('timeCheckBtn').addEventListener('click', displayDateAndTime); // Add click event
 }
+
+// Function to clear the displayed time after 5 seconds
 function clearDateAndTime() {
-  document.getElementById('time').innerHTML = '';
+  document.getElementById('time').innerHTML = ''; // Clear time display
 }
+
+// Set up time check button and auto-clear
 getBtnAndShow();
-setInterval(clearDateAndTime, 5000);
+setInterval(clearDateAndTime, 5000); // Clear time every 5 seconds
 
-
-
-
-
-
-// This export is to enable testing of your two testable primary functions.
-// PLEASE DO NOT EDIT below this line!!!
-
+// Export functions for testing (do not edit below this line)
 module.exports.getBtnAndShow = getBtnAndShow;
 module.exports.clearDateAndTime = clearDateAndTime;
-
-
